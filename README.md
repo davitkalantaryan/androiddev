@@ -9,6 +9,9 @@ qt version should be installed (latter than version 5.9)
 To enable developer mode  
 [enable developer mode](https://developer.android.com/studio/debug/dev-options)  
 
- 
+ ```
+export ANDROID_NDK_ROOT=/home/kalantard/Android/Sdk/ndk-bundle
+/home/kalantard/Qt/5.9/android_armv7/bin/qmake -spec android-g++
+ ```
   
 [https://davitkalantaryan.github.io/androiddev/](web)  

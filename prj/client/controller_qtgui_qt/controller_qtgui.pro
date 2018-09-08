@@ -5,6 +5,9 @@
 # for PITZ
 # CONFIG += TEST
 # For making test: '$qmake "CONFIG+=TEST" daqadcreceiver.pro' , then '$make'
+
+CONFIG += c++11
+
 include(../../common/common_qt/sys_common.pri)
 include(../../common/common_qt/gui_with_mainwnd.pri)
 

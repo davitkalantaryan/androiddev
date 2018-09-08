@@ -5,6 +5,7 @@
 
 #include "omxclient_groupwidget.hpp"
 #include "omxclient_qtapplication.hpp"
+#include <QDebug>
 
 #ifdef ANDROID
 #define     _BUTTON_HEIGHT_     128
@@ -30,6 +31,27 @@ omxclient::GroupWidget::GroupWidget(const QString& a_groupName)
 
     m_lytMain.addWidget(&m_btnStopAll);
 
+#if 0
+    TapGesture        = 1,
+    TapAndHoldGesture = 2,
+    PanGesture        = 3,
+    PinchGesture      = 4,
+    SwipeGesture      = 5;
+#endif
+
+    //m_swipeGesture = new MySwipeGesture(this);
+    //connect(m_swipeGesture,SIGNAL(handleSwipe(MySwipeGesture::SwipeDirection)),this,SLOT(swipe(MySwipeGesture::SwipeDirection)));
+
+    //setAttribute(Qt::WA_AcceptTouchEvents);
+
+    //this->grabGesture(Qt::TapGesture);
+    //this->grabGesture(Qt::TapAndHoldGesture);
+    //this->grabGesture(Qt::PanGesture);
+    //this->grabGesture(Qt::PinchGesture);
+    //this->grabGesture(Qt::SwipeGesture);
+    //Q_FOREACH (Qt::GestureType gesture, gestures)
+    //    grabGesture(gesture);
+
     setLayout(&m_lytMain);
     connect(&m_btnStopAll,SIGNAL(clicked()),THIS_APP,SLOT(StopAllSlot()));
 }
@@ -48,6 +70,54 @@ omxclient::GroupWidget::~GroupWidget()
 
     m_lytMain.removeWidget(&m_btnStopAll);
 }
+
+
+bool omxclient::GroupWidget::event(QEvent *a_event)
+{
+    // qDebug() << "swipe" << direction;
+#if 1
+    switch(a_event->type())
+    {
+    case QEvent::Gesture:
+        return gestureEvent(static_cast<QGestureEvent*>(a_event));
+        break;
+    case QEvent::MouseButtonDblClick:case QEvent::MouseButtonPress:case QEvent::MouseButtonRelease:
+        break;
+    case QEvent::MouseMove:
+        break;
+    case QEvent::MouseTrackingChange:
+        break;
+    case QEvent::TouchBegin:
+        break;
+    default:
+        break;
+    }
+#endif
+    return QWidget::event(a_event);
+}
+
+
+void omxclient::GroupWidget::mouseMoveEvent(QMouseEvent * a_event)
+{
+    QWidget::mouseMoveEvent(a_event);
+    return;
+}
+
+
+bool omxclient::GroupWidget::gestureEvent(QGestureEvent *)
+{
+#if 0
+    qCDebug(lcExample) << "gestureEvent():" << event;
+    if (QGesture *swipe = event->gesture(Qt::SwipeGesture))
+        swipeTriggered(static_cast<QSwipeGesture *>(swipe));
+    else if (QGesture *pan = event->gesture(Qt::PanGesture))
+        panTriggered(static_cast<QPanGesture *>(pan));
+    if (QGesture *pinch = event->gesture(Qt::PinchGesture))
+        pinchTriggered(static_cast<QPinchGesture *>(pinch));
+#endif
+    return true;
+}
+
 
 
 void omxclient::GroupWidget::SetIndexInTabAny(int a_index)

@@ -9,6 +9,7 @@
 #include <QPushButton>
 #include <QVBoxLayout>
 #include <QUrl>
+#include <QGestureEvent>
 
 namespace omxclient {
 
@@ -47,6 +48,11 @@ public:
     //void SetTabAndIndexInTabAny(CentralTab* tab,int index);
     void SetIndexInTabAny(int index);
 
+    bool event(QEvent *event);
+    //void mouseMoveEvent();
+    void mouseMoveEvent(QMouseEvent *event);
+    bool gestureEvent(QGestureEvent * event);
+
 private slots:
     void RemoveChannelSlot(void* channelBtnPtr);
 
@@ -59,6 +65,7 @@ private:
 
     int             m_nNumberOfButtons;
     int             m_nIndexInTab;
+
 };
 
 }
