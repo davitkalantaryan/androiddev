@@ -15,3 +15,6 @@ export ANDROID_NDK_ROOT=/home/kalantard/Android/Sdk/ndk-bundle
  ```
   
 [web](https://davitkalantaryan.github.io/androiddev/)  
+[compile qt for android](http://wiki.qt.io/Android)  
+[hint to compile android qt using clang++](https://stackoverflow.com/questions/43654355/configure-qt-creator-to-use-clang-with-qt-for-android)  
+
