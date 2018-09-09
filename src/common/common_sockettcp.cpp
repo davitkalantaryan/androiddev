@@ -121,9 +121,19 @@ int common::SocketTCP::connectC(const char *a_svrName, int a_port, int a_connect
 	return 0;
 }
 
+#ifdef ANDROID
+#include <android/api-level.h>
+#if defined(__ANDROID_API__) && (__ANDROID_API__>20)
+#define sys_timeb_is_not_defined
+#endif
+#endif
 
 #ifndef MSEC
+#ifdef sys_timeb_is_not_defined
+#include <sys/time.h>
+#else
 #include <sys/timeb.h>
+#endif
 #define MSEC(finish, start)	( (long)( (finish).millitm - (start).millitm ) + \
 							(long)( (finish).time - (start).time ) * 1000 )
 #endif

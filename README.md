@@ -8,16 +8,24 @@ qt version should be installed (latter than version 5.9)
 [qt for android](http://doc.qt.io/qt-5/androidgs.html)  
 To enable developer mode  
 [enable developer mode](https://developer.android.com/studio/debug/dev-options)  
+[prepare future graphics](https://www.norio.be/android-feature-graphic-generator/)  
+
 
  ```
 export ANDROID_NDK_ROOT=/home/kalantard/Android/Sdk/ndk-bundle
 /home/kalantard/Qt/5.9/android_armv7/bin/qmake -spec android-g++
+
 /home/kalantard/Qt/5.9/android_armv7/bin/androiddeployqt \
 --input /home/kalantard/dev/androiddev/prj/client/controller_qtgui_qt/android-libcontroller_qtgui.so-deployment-settings.json \
 --output /home/kalantard/dev/androiddev/prj/client/controller_qtgui_qt/android-build \
 --deployment bundled --android-platform android-28 \
 --jdk /usr/lib/jvm/java-8-openjdk-amd64 \
 --gradle --release
+
+/home/kalantard/dev/android-dev-tools/sdk-26.1.1/build-tools/28.0.2/apksigner sign \
+-ks /home/kalantard/dev/.keystore/dkcommon.jks --ks-key-alias dkcommon \
+/home/kalantard/dev/androiddev/prj/client/controller_qtgui_qt/android-build/build/outputs/apk/android-build-release-unsigned.apk
+
  ```
   
 [web](https://davitkalantaryan.github.io/androiddev/)  

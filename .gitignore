@@ -10,6 +10,7 @@ prj/*/*/*
 !prj/*/*_vs15/Makefile
 !prj/*/*_vs15/*.h
 !prj/*/*/*.pro
+!prj/*/*/android/AndroidManifest.xml
 !prj/*/*/*.pri
 !prj/*/*_mkfl/Makefile
 !prj/driver/*/*.rules
