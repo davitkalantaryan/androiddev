@@ -12,6 +12,12 @@ To enable developer mode
  ```
 export ANDROID_NDK_ROOT=/home/kalantard/Android/Sdk/ndk-bundle
 /home/kalantard/Qt/5.9/android_armv7/bin/qmake -spec android-g++
+/home/kalantard/Qt/5.9/android_armv7/bin/androiddeployqt \
+--input /home/kalantard/dev/androiddev/prj/client/controller_qtgui_qt/android-libcontroller_qtgui.so-deployment-settings.json \
+--output /home/kalantard/dev/androiddev/prj/client/controller_qtgui_qt/android-build \
+--deployment bundled --android-platform android-28 \
+--jdk /usr/lib/jvm/java-8-openjdk-amd64 \
+--gradle --release
  ```
   
 [web](https://davitkalantaryan.github.io/androiddev/)  
